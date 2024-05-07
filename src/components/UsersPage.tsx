@@ -2,21 +2,36 @@ import { useState } from "react";
 import UserCard from "./common/UserCard";
 import Pagination from "./common/Pagination";
 import { useUsers } from "./hooks/useUsers";
-import { paginate } from "../utils";
+import { normalizeString, paginate } from "../utils";
+import SearchBox from "./common/SearchBox";
 
 const PAGE_SIZE = 10;
 
 function UsersPage() {
   const [selectedPage, setSelectedPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
   const users = useUsers();
 
-  const paginatedUsers = paginate(users, PAGE_SIZE, selectedPage);
+  function handleSearch(value: string) {
+    setSearchQuery(normalizeString(value));
+    setSelectedPage(1);
+  }
+
+  const filteredUsers = users.filter((user) =>
+    normalizeString(
+      `${user.name.first} ${user.name.last} ${user.name.title}`
+    ).includes(searchQuery.toLowerCase())
+  );
+
+  const paginatedUsers = paginate(filteredUsers, PAGE_SIZE, selectedPage);
+
   return (
     <>
+      <SearchBox value={searchQuery} onChange={handleSearch} />
       <UserCard users={paginatedUsers} />
       <Pagination
         pageSize={PAGE_SIZE}
-        totalCount={users.length}
+        totalCount={filteredUsers.length}
         selectedPage={selectedPage}
         onPageSelect={setSelectedPage}
       />

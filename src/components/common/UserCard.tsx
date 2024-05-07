@@ -15,9 +15,7 @@ function UserCard({ users }: Props) {
             </div>
             <div className="ml-3">
               <h2 className="card-title">
-                {user.name.title}
-                {` ${user.name.first} `}
-                {user.name.last}
+                {`${user.name.title} ${user.name.first} ${user.name.last}`}
               </h2>
               <p>
                 {`cell number: ${user.cell}, `}

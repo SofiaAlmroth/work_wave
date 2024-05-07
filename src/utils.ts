@@ -16,3 +16,15 @@ export function paginate<T>(
 
   return items.slice(startIndex, endIndex);
 }
+
+export function normalizeString(input: string) {
+  return input
+    .normalize("NFD") // Decompose into base characters and diacritical marks
+    .replace(/[\u0300-\u036f]/g, "") // Remove diacritical marks
+    .replace(/đ/g, "d")
+    .replace(/ø/g, "o")
+    .replace(/Đ/g, "D") // Specific replacements if needed
+    .toLowerCase() // Convert to lowercase
+    .trim() // Trim whitespace
+    .replace(/\s+/g, " "); // Replace multiple spaces with a single space
+}

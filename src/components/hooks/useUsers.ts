@@ -10,7 +10,6 @@ export function useUsers() {
       const response = await getUsers();
       const userData = response.data.results; // Access the results array
       setUsers(userData);
-      console.log(userData);
     }
     fetchUsers();
   }, []);

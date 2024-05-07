@@ -19,7 +19,7 @@ function Pagination({
   if (pageCount <= 1) return null;
 
   return (
-    <div className="text-center mt-6">
+    <div className="text-center m-12">
       <div className="join">
         {pages.map((page) => (
           <button
