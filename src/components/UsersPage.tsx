@@ -4,7 +4,6 @@ import Pagination from "./common/Pagination";
 import { useUsers } from "./hooks/useUsers";
 import { normalizeString, paginate } from "../utils";
 import SearchBox from "./common/SearchBox";
-import Navbar from "./Navbar";
 
 const PAGE_SIZE = 10;
 
@@ -28,7 +27,6 @@ function UsersPage() {
 
   return (
     <>
-      <Navbar />
       <SearchBox value={searchQuery} onChange={handleSearch} />
       <UserCard users={paginatedUsers} />
       <Pagination

@@ -25,6 +25,5 @@ export function normalizeString(input: string) {
     .replace(/ø/g, "o")
     .replace(/Đ/g, "D") // Specific replacements if needed
     .toLowerCase() // Convert to lowercase
-    .trim() // Trim whitespace
     .replace(/\s+/g, " "); // Replace multiple spaces with a single space
 }

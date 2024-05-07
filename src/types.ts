@@ -6,7 +6,12 @@ export interface User {
     last: string;
   };
   location: {
+    street: {
+      number: number;
+      name: string;
+    };
     city: string;
+    postcode: number;
     state: string;
     country: string;
   };
