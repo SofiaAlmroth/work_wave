@@ -11,7 +11,7 @@ function UserCard({ users }: Props) {
       {users.map((user) => (
         <div
           key={user.email}
-          className="card bg-base-100 shadow-xl mx-10 m-3 flex flex-row items-center justify-between p-6"
+          className="card bg-base-100 shadow-xl mx-3 m-3 flex flex-col sm:flex-row items-end justify-between p-6"
         >
           <div className="flex flex-row items-center">
             <div className="mask mask-squircle w-12 h-12">
@@ -21,15 +21,16 @@ function UserCard({ users }: Props) {
               <h2 className="card-title">
                 {`${user.name.title} ${user.name.first} ${user.name.last}`}
               </h2>
-              <p>
+
+              <div>
                 <i className="fa-solid fa-phone"></i>
-                {` ${user.cell}`}
+                <p>{` ${user.cell}`}</p>
                 <i
                   className="fa-solid fa-envelope"
                   style={{ marginLeft: "40px" }}
                 ></i>
                 {` ${user.email} `}
-              </p>
+              </div>
             </div>
           </div>
           <div>

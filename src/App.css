@@ -1,0 +1,8 @@
+.list {
+  line-height: 1.5;
+}
+
+.email-text {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
