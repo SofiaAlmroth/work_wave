@@ -1,6 +1,7 @@
-import Users from "./components/UserCard";
+import UsersPage from "./components/UsersPage";
+
 function App() {
-  return <Users />;
+  return <UsersPage />;
 }
 
 export default App;
