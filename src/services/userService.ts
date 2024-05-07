@@ -3,16 +3,16 @@ import { ApiResponse } from "../types";
 
 const API_ENDPOINT = "https://randomuser.me/api/?results=30&seed=myseed";
 
-function userUrl(id?: string) {
-  if (id) return `https://randomuser.me/api/?seed=myseed&nat=us&id=${id}`;
+// function userUrl(id?: string) {
+//   if (id) return `https://randomuser.me/api/?seed=myseed&nat=us&id=${id}`;
 
-  return API_ENDPOINT;
-}
+//   return API_ENDPOINT;
+// }
 
 export function getUsers() {
-  return axios.get<ApiResponse>(userUrl());
+  return axios.get<ApiResponse>(API_ENDPOINT);
 }
 
-export function getUserById(id: string) {
-  return axios.get<ApiResponse>(userUrl(id));
-}
+// export function getUserById(id: string) {
+//   return axios.get<ApiResponse>(userUrl(id));
+// }

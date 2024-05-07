@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { User } from "../../types";
 
 interface Props {
@@ -9,12 +10,12 @@ function UserCard({ users }: Props) {
     <>
       {users.map((user) => (
         <div
-          key={user.nat}
+          key={user.email}
           className="card bg-base-100 shadow-xl mx-10 m-3 flex flex-row items-center justify-between p-6"
         >
           <div className="flex flex-row items-center">
             <div className="mask mask-squircle w-12 h-12">
-              <img src={user.picture.large} alt="User Avatar" />
+              <img src={user.picture.thumbnail} alt="User Avatar" />
             </div>
             <div className="ml-3">
               <h2 className="card-title">
@@ -32,7 +33,9 @@ function UserCard({ users }: Props) {
             </div>
           </div>
           <div>
-            <button className="btn btn-primary btn-sm">Details</button>
+            <Link to={`/user/${user.email}`} className="btn btn-primary btn-sm">
+              Details
+            </Link>
           </div>
         </div>
       ))}
