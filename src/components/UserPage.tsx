@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useUsers } from "./hooks/useUsers";
 
 function UserPage() {
@@ -69,6 +69,11 @@ function UserPage() {
               <p>{user.location.country}</p>
             </div>
           </div>
+        </div>
+        <div className="flex justify-end">
+          <Link to={"/"} className="btn btn-primary">
+            Back
+          </Link>
         </div>
       </div>
     </div>
