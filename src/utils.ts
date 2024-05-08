@@ -1,11 +1,3 @@
-export default function range(startNbr: number, endNbr: number) {
-  let newArray: number[] = [];
-  for (let count = startNbr; count <= endNbr; count++) {
-    newArray.push(count);
-  }
-  return newArray;
-}
-
 export function paginate<T>(
   items: T[],
   pageSize: number,

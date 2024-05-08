@@ -13,7 +13,7 @@ function UserCard({ users, onSort }: Props) {
 
   return (
     <>
-      <div className="flex flex-row gap-2 m-3 ml-10">
+      <div className="flex flex-row gap-2 m-3 ml-6 absolute top-16">
         <div className="tooltip" data-tip="Sort Ascending">
           <button
             onClick={() => handleSort("name.last", "asc")}
@@ -64,10 +64,7 @@ function UserCard({ users, onSort }: Props) {
             </div>
           </div>
           <div>
-            <Link
-              to={`/user/${user.email}`}
-              className="btn btn-primary btn-sm "
-            >
+            <Link to={`/user/${user.email}`} className="btn btn-primary btn-sm">
               Details
             </Link>
           </div>

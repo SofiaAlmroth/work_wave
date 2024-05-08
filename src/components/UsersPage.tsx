@@ -6,20 +6,26 @@ import { useState } from "react";
 import { useUsers } from "./hooks/useUsers";
 import { normalizeString, paginate } from "../utils";
 import { SortColumn } from "../types";
+import { PAGE_SIZE } from "../services/userService";
 
-const PAGE_SIZE = 10;
 const DEFAULT_SORT_COLUMN: SortColumn = { path: "name.first", order: "asc" };
 
 function UsersPage() {
-  const [selectedPage, setSelectedPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortColumn, setSortColumn] = useState(DEFAULT_SORT_COLUMN);
-  const users = useUsers();
+  const users = useUsers(currentPage);
+  console.log("currentPage", currentPage);
 
   function handleSearch(value: string) {
     setSearchQuery(normalizeString(value));
-    setSelectedPage(1);
+    setCurrentPage(1);
   }
+
+  // function handlePageChange(newPage: number) {
+  //   console.log("newPage", newPage);
+  //   setCurrentPage(newPage);
+  // }
 
   const filteredUsers = users.filter((user) =>
     normalizeString(
@@ -33,19 +39,18 @@ function UsersPage() {
     sortColumn.order
   );
 
-  const paginatedUsers = paginate(sortedUsers, PAGE_SIZE, selectedPage);
+  const paginatedUsers = paginate(sortedUsers, PAGE_SIZE, currentPage);
 
   return (
     <>
       <SearchBox value={searchQuery} onChange={handleSearch} />
-
-      <UserCard onSort={setSortColumn} users={paginatedUsers} />
       <Pagination
         pageSize={PAGE_SIZE}
         totalCount={filteredUsers.length}
-        selectedPage={selectedPage}
-        onPageSelect={setSelectedPage}
+        selectedPage={currentPage}
+        onPageSelect={setCurrentPage}
       />
+      <UserCard onSort={setSortColumn} users={paginatedUsers} />
     </>
   );
 }
