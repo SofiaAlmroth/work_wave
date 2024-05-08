@@ -8,36 +8,31 @@ interface Props {
 function UserCard({ user }: Props) {
   return (
     <>
-      <div className=" card bg-base-100 shadow-xl m-3 p-6 flex flex-col sm:flex-row justify-between items-start">
-        <div className="flex items-center space-x-3">
-          <div className="mask mask-squircle w-12 h-12 overflow-hidden">
-            <img
-              src={user.picture.thumbnail}
-              alt="User Avatar"
-              className="object-cover min-w-full min-h-full"
-            />
+      <div className=" card bg-base-100 shadow-xl p-6 ">
+        <div className="">
+          <div className="mask mask-squircle w-16 h-16 my-3">
+            <img src={user.picture.medium} alt="User Avatar" />
           </div>
-          <div className="flex flex-col sm:flex-row">
-            <div>
-              <h2 className="card-title">
-                {`${user.name.title} ${user.name.first} ${user.name.last}`}
-              </h2>
+          <div>
+            <h2 className="card-title">
+              {`${user.name.title} ${user.name.first} ${user.name.last}`}
+            </h2>
 
-              <div className="flex flex-col sm:flex-row mt-2">
-                <div className="flex items-center mr-6">
-                  <i className="fa-solid fa-phone pr-2"></i>
-                  {user.cell}
-                </div>
-                <div className="flex items-center ">
-                  <i className="fa-solid fa-envelope pr-2"></i>
-                  {user.email}
-                </div>
-              </div>
+            <div className=" mr-6">
+              <i className="fa-solid fa-phone pr-2"></i>
+              {user.cell}
+            </div>
+            <div className="flex items-center ">
+              <i className="fa-solid fa-envelope pr-2"></i>
+              {user.email}
             </div>
           </div>
         </div>
-        <div>
-          <Link to={`/user/${user.email}`} className="btn btn-primary btn-sm">
+        <div className="flex justify-end">
+          <Link
+            to={`/user/${user.email}`}
+            className="btn btn-primary btn-sm my-3"
+          >
             Details
           </Link>
         </div>

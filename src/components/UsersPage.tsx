@@ -61,7 +61,7 @@ function UsersPage() {
           sortOrder={sortColumn.order}
         />
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="m-3 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {paginatedUsers.map((user) => (
           <UserCard key={user.email} user={user} />
         ))}
