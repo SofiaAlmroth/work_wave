@@ -40,7 +40,7 @@ function UserPage() {
             </div>
           </div>
           {/* Contact Info Section */}
-          <div className="flex-1 p-4">
+          <div className="flex-1 p-2">
             <div className="flex items-center mb-3">
               <i className="fa-solid fa-envelope pr-2"></i>
               <p className="email-text">{user.email}</p>
@@ -55,7 +55,7 @@ function UserPage() {
             </div>
           </div>
           {/* Address Info Section */}
-          <div className="flex-1 p-4">
+          <div className="flex-1 p-2">
             <div className="flex items-center mb-3">
               <i className="fa-solid fa-location-dot pr-2"></i>
               <p>{user.location.street.name}</p>
