@@ -22,11 +22,6 @@ function UsersPage() {
     setCurrentPage(1);
   }
 
-  // function handlePageChange(newPage: number) {
-  //   console.log("newPage", newPage);
-  //   setCurrentPage(newPage);
-  // }
-
   const filteredUsers = users.filter((user) =>
     normalizeString(
       `${user.name.first} ${user.name.last} ${user.name.title}`

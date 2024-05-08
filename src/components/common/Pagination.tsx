@@ -23,7 +23,7 @@ function Pagination({
         <button
           onClick={() => onPageSelect(selectedPage - 1)}
           className="join-item btn btn-sm"
-          //disabled={selectedPage === pageCount}
+          disabled={selectedPage === 1}
         >
           «
         </button>
@@ -33,7 +33,7 @@ function Pagination({
         <button
           onClick={() => onPageSelect(selectedPage + 1)}
           className="join-item btn btn-sm"
-          //disabled={selectedPage === pageCount}
+          disabled={selectedPage === pageCount}
         >
           »
         </button>
