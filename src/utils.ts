@@ -11,11 +11,11 @@ export function paginate<T>(
 
 export function normalizeString(input: string) {
   return input
-    .normalize("NFD") // Decompose into base characters and diacritical marks
-    .replace(/[\u0300-\u036f]/g, "") // Remove diacritical marks
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/đ/g, "d")
     .replace(/ø/g, "o")
-    .replace(/Đ/g, "D") // Specific replacements if needed
-    .toLowerCase() // Convert to lowercase
-    .replace(/\s+/g, " "); // Replace multiple spaces with a single space
+    .replace(/Đ/g, "D")
+    .toLowerCase()
+    .replace(/\s+/g, " ");
 }

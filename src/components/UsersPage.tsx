@@ -47,14 +47,18 @@ function UsersPage() {
   const paginatedUsers = paginate(sortedUsers, PAGE_SIZE, currentPage);
 
   return (
-    <>
-      <SearchBox value={searchQuery} onChange={handleSearch} />
-      <Pagination
-        pageSize={PAGE_SIZE}
-        totalCount={filteredUsers.length}
-        selectedPage={currentPage}
-        onPageSelect={setCurrentPage}
-      />
+    <div className="relative">
+      <div className="fixed top-0 left-0 right-0 z-10 bg-gray-50 bg-opacity-50 ">
+        <SearchBox value={searchQuery} onChange={handleSearch} />
+      </div>
+      <div className="pt-16">
+        <Pagination
+          pageSize={PAGE_SIZE}
+          totalCount={filteredUsers.length}
+          selectedPage={currentPage}
+          onPageSelect={setCurrentPage}
+        />
+      </div>
       <div className="flex flex-row gap-2 m-3 ml-6 absolute top-16">
         <SortButton
           onClick={() => handleSort("name.last")}
@@ -66,7 +70,7 @@ function UsersPage() {
           <UserCard key={user.email} user={user} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -14,10 +14,9 @@ function UserCard({ user }: Props) {
             <img src={user.picture.medium} alt="User Avatar" />
           </div>
           <div>
-            <h2 className="card-title">
+            <h2 className="card-title mb-3">
               {`${user.name.title} ${user.name.first} ${user.name.last}`}
             </h2>
-
             <div className=" mr-6">
               <i className="fa-solid fa-phone pr-2"></i>
               {user.cell}
