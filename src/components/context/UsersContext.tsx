@@ -53,8 +53,8 @@ export default function UsersProvider({ children }: PropsWithChildren) {
     PAGE_SIZE,
     filteredUsers,
     currentPage,
-    paginatedUsers,
     handleSearch,
+    paginatedUsers,
     setCurrentPage,
     setSortColumn,
   };
