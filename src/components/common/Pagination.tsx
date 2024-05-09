@@ -12,9 +12,6 @@ function Pagination({
   onPageSelect,
 }: Props) {
   const pageCount = Math.ceil(totalCount / pageSize);
-  console.log("pageCount", pageCount);
-  console.log("totalCount", totalCount);
-  console.log("pageSize", pageSize);
   if (pageCount <= 1) return null;
 
   return (
@@ -27,9 +24,7 @@ function Pagination({
         >
           «
         </button>
-
         <button className="join-item btn btn-sm">{selectedPage}</button>
-
         <button
           onClick={() => onPageSelect(selectedPage + 1)}
           className="join-item btn btn-sm"
@@ -43,23 +38,3 @@ function Pagination({
 }
 
 export default Pagination;
-
-{
-  /* <div className="text-center m-6">
-<div className="join">
-  {pages.map((page) => (
-    <button
-      key={page}
-      className={`join-item btn ${
-        page === selectedPage ? "btn-active" : ""
-      }`}
-      onClick={() => onPageSelect(page)}
-    >
-      <a className="page-link" href="#">
-        {page}
-      </a>
-    </button>
-  ))}
-</div>
-</div> */
-}

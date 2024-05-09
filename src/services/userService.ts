@@ -6,8 +6,8 @@ const SEED = "myseed";
 const USERS = 100;
 export const PAGE_SIZE = 12;
 
-export function getUsers() {
+export async function getUsers() {
   const url = `${API_BASE_URL}?results=${USERS}&seed=${SEED}`;
-  console.log("users", url);
-  return axios.get<ApiResponse>(url);
+  const response = await axios.get<ApiResponse>(url);
+  return response?.data?.results || [];
 }

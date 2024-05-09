@@ -7,9 +7,8 @@ export function useUsers(page = 1) {
 
   useEffect(() => {
     async function fetchUsers() {
-      const response = await getUsers();
-      const userData = response.data.results;
-      setUsers(userData);
+      const users = await getUsers();
+      setUsers(users);
     }
     fetchUsers();
   }, [page]);

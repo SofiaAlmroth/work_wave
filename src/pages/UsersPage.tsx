@@ -1,13 +1,14 @@
-import UserCard from "./common/UserCard";
-import Pagination from "./common/Pagination";
-import SearchBox from "./common/SearchBox";
+import UserCard from "../components/UserCard";
+import Pagination from "../components/common/Pagination";
+import SearchBox from "../components/common/SearchBox";
 import _ from "lodash";
 import { useState } from "react";
-import { useUsers } from "./hooks/useUsers";
+import { useUsers } from "../components/hooks/useUsers";
 import { normalizeString, paginate } from "../utils";
 import { SortColumn } from "../types";
 import { PAGE_SIZE } from "../services/userService";
-import SortButton from "./common/SortButton";
+import SortButton from "../components/common/SortButton";
+// import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 const DEFAULT_SORT_COLUMN: SortColumn = { path: "name.last", order: "asc" };
 
@@ -16,7 +17,10 @@ function UsersPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortColumn, setSortColumn] = useState(DEFAULT_SORT_COLUMN);
   const users = useUsers(currentPage);
-  console.log("currentPage", currentPage);
+  // const { data: users = [], isLoading } = useQuery({
+  //   queryKey: ["users"],
+  //   queryFn: () => getUsers(),
+  // });
 
   function handleSearch(value: string) {
     setSearchQuery(normalizeString(value));
@@ -48,7 +52,7 @@ function UsersPage() {
 
   return (
     <div className="relative">
-      <div className="fixed top-0 left-0 right-0 z-10 bg-gray-50 bg-opacity-50 ">
+      <div className="fixed top-16 left-0 right-0 z-10 bg-gray-50 bg-opacity-50 ">
         <SearchBox value={searchQuery} onChange={handleSearch} />
       </div>
       <div className="pt-16">

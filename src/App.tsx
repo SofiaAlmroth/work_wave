@@ -1,11 +1,12 @@
-import UsersPage from "./components/UsersPage";
-import UsersProvider from "./components/context/UsersContext";
+import Navbar from "./components/Navbar";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <UsersProvider>
-      <UsersPage />
-    </UsersProvider>
+    <>
+      <Navbar />
+      <Outlet />
+    </>
   );
 }
 

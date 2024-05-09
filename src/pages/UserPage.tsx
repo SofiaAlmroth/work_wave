@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useUsers } from "./hooks/useUsers";
+import { useUsers } from "../components/hooks/useUsers";
 
 function UserPage() {
   const { email: userEmail } = useParams();
@@ -8,14 +8,18 @@ function UserPage() {
   const user = users.find((user) => user.email === userEmail);
 
   if (!user) {
-    return <p>User not found</p>;
+    return (
+      <div className="flex justify-center align-">
+        <span className="loading loading-spinner text-primary"></span>
+        <p>Loading User</p>;
+      </div>
+    );
   }
 
   return (
     <div className="card bg-primary bg-opacity-10 shadow-xl m-12 text-lg">
       <div className="card-body p-2 sm:p-4">
         <div className="flex flex-col md:flex-row md:items-end lg:m-12">
-          {/* User Info Section */}
           <div className="flex-1 p-2">
             <img
               className="mask mask-squircle mb-6"
@@ -39,7 +43,6 @@ function UserPage() {
               </p>
             </div>
           </div>
-          {/* Contact Info Section */}
           <div className="flex-1 p-2">
             <div className="flex items-center mb-3">
               <i className="fa-solid fa-envelope pr-2"></i>
@@ -54,7 +57,6 @@ function UserPage() {
               <p>{user.phone}</p>
             </div>
           </div>
-          {/* Address Info Section */}
           <div className="flex-1 p-2">
             <div className="flex items-center mb-3">
               <i className="fa-solid fa-location-dot pr-2"></i>
@@ -71,7 +73,7 @@ function UserPage() {
           </div>
         </div>
         <div className="flex justify-end">
-          <Link to={"/"} className="btn btn-primary">
+          <Link to={"/users"} className="btn btn-primary">
             Back
           </Link>
         </div>
