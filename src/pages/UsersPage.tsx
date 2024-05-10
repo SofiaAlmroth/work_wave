@@ -78,7 +78,7 @@ function UsersPage() {
           onPageSelect={setCurrentPage}
         />
       </div>
-      <div className="flex flex-row gap-2 m-3 ml-6 absolute top-16">
+      <div className="flex flex-row gap-2 m-3 ml-6 absolute top-32">
         <SortButton
           onClick={() => handleSort("name.last")}
           sortOrder={sortColumn.order}
