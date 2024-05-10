@@ -1,14 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import UsersPage from "./pages/UsersPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import App from "./App";
 
 const router = createBrowserRouter([
   {
-    path: "/users",
-    element: <App />,
+    path: "/",
+    element: <UsersPage />,
     errorElement: <NotFoundPage />,
-    children: [{ path: "/users", element: <UsersPage /> }],
   },
 ]);
 

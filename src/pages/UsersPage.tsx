@@ -9,6 +9,7 @@ import { useUsers } from "../components/hooks/useUsers";
 import { normalizeString, paginate } from "../utils";
 import { SortColumn, User } from "../types";
 import { PAGE_SIZE } from "../services/userService";
+import Navbar from "../components/Navbar";
 
 const DEFAULT_SORT_COLUMN: SortColumn = { path: "name.last", order: "asc" };
 
@@ -65,6 +66,7 @@ function UsersPage() {
 
   return (
     <div className="relative">
+      <Navbar />
       <div className="fixed top-14 left-0 right-0 z-10 bg-gray-50 bg-opacity-50 ">
         <SearchBox value={searchQuery} onChange={handleSearch} />
       </div>
