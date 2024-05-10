@@ -1,9 +1,9 @@
 import UserCard from "../components/UserCard";
 import Pagination from "../components/common/Pagination";
 import SearchBox from "../components/common/SearchBox";
-import _ from "lodash";
 import SortButton from "../components/common/SortButton";
 import UserModal from "./UserModal";
+import _ from "lodash";
 import { useEffect, useRef, useState } from "react";
 import { useUsers } from "../components/hooks/useUsers";
 import { normalizeString, paginate } from "../utils";
