@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  console.log("navbar rendering");
   return (
     <div className="navbar bg-base-100 ">
       <Link to={"/users"} className="btn btn-ghost text-3xl">

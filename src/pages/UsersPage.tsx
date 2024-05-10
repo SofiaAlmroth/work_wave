@@ -2,13 +2,13 @@ import UserCard from "../components/UserCard";
 import Pagination from "../components/common/Pagination";
 import SearchBox from "../components/common/SearchBox";
 import _ from "lodash";
-import { useState } from "react";
+import SortButton from "../components/common/SortButton";
+import UserModal from "./UserModal";
+import { useEffect, useRef, useState } from "react";
 import { useUsers } from "../components/hooks/useUsers";
 import { normalizeString, paginate } from "../utils";
-import { SortColumn } from "../types";
+import { SortColumn, User } from "../types";
 import { PAGE_SIZE } from "../services/userService";
-import SortButton from "../components/common/SortButton";
-// import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 const DEFAULT_SORT_COLUMN: SortColumn = { path: "name.last", order: "asc" };
 
@@ -16,11 +16,24 @@ function UsersPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortColumn, setSortColumn] = useState(DEFAULT_SORT_COLUMN);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const users = useUsers(currentPage);
-  // const { data: users = [], isLoading } = useQuery({
-  //   queryKey: ["users"],
-  //   queryFn: () => getUsers(),
-  // });
+  const modalRef = useRef<HTMLDialogElement>(null);
+
+  function handleOpenModal(user: User) {
+    setSelectedUser(user);
+  }
+
+  useEffect(() => {
+    if (selectedUser && modalRef.current) {
+      modalRef.current.showModal();
+    }
+  }, [selectedUser]);
+
+  function handleCloseModal() {
+    setSelectedUser(null);
+    modalRef.current?.close();
+  }
 
   function handleSearch(value: string) {
     setSearchQuery(normalizeString(value));
@@ -52,7 +65,7 @@ function UsersPage() {
 
   return (
     <div className="relative">
-      <div className="fixed top-16 left-0 right-0 z-10 bg-gray-50 bg-opacity-50 ">
+      <div className="fixed top-14 left-0 right-0 z-10 bg-gray-50 bg-opacity-50 ">
         <SearchBox value={searchQuery} onChange={handleSearch} />
       </div>
       <div className="pt-16">
@@ -71,9 +84,20 @@ function UsersPage() {
       </div>
       <div className="m-3 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {paginatedUsers.map((user) => (
-          <UserCard key={user.email} user={user} />
+          <UserCard
+            onOpen={() => handleOpenModal(user)}
+            key={user.email}
+            user={user}
+          />
         ))}
       </div>
+      {selectedUser && (
+        <UserModal
+          user={selectedUser}
+          onClose={handleCloseModal}
+          ref={modalRef}
+        />
+      )}
     </div>
   );
 }

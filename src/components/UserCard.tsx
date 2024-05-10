@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
 import { User } from "../types";
 
 interface Props {
   user: User;
+  onOpen(user: User): void;
 }
 
-function UserCard({ user }: Props) {
+function UserCard({ user, onOpen }: Props) {
   return (
     <>
       <div className=" card bg-base-100 shadow-xl p-6 ">
@@ -28,12 +28,13 @@ function UserCard({ user }: Props) {
           </div>
         </div>
         <div className="flex justify-end">
-          <Link
-            to={`/user/${user.email}`}
+          <button
+            onClick={() => onOpen(user)}
+            key={user.email}
             className="btn btn-primary btn-sm my-3"
           >
             Details
-          </Link>
+          </button>
         </div>
       </div>
     </>
