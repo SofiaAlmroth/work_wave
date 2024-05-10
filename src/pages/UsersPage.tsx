@@ -2,7 +2,7 @@ import UserCard from "../components/UserCard";
 import Pagination from "../components/common/Pagination";
 import SearchBox from "../components/common/SearchBox";
 import SortButton from "../components/common/SortButton";
-import UserModal from "./UserModal";
+import UserModal from "../components/UserModal";
 import _ from "lodash";
 import { useEffect, useRef, useState } from "react";
 import { useUsers } from "../components/hooks/useUsers";

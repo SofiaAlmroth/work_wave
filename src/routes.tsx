@@ -5,7 +5,7 @@ import App from "./App";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/users",
     element: <App />,
     errorElement: <NotFoundPage />,
     children: [{ path: "/users", element: <UsersPage /> }],
