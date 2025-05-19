@@ -5,7 +5,7 @@ interface Props {
 
 function SearchBox({ value, onChange }: Props) {
   return (
-    <label className="input input-bordered input-primary flex items-center gap-2 m-3">
+    <label className="input input-primary flex items-center max-w-lg mx-auto mt-10">
       <input
         type="text"
         className="grow"

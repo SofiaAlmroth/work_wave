@@ -66,16 +66,14 @@ function UsersPage() {
   const paginatedUsers = paginate(sortedUsers, PAGE_SIZE, currentPage);
 
   return (
-    <div className="min-h-screen p-12 m-10 bg-base-100 text-neutral ">
-      <div className="pt-16">
+    <div className="min-h-screen p-6 m-10 bg-base-100 text-neutral ">
+      <div className="flex items-center justify-between">
         <Pagination
           pageSize={PAGE_SIZE}
           totalCount={filteredUsers.length}
           selectedPage={currentPage}
           onPageSelect={setCurrentPage}
         />
-      </div>
-      <div className="flex flex-row gap-2 m-3 ml-6 absolute top-32">
         <SortButton
           onClick={() => handleSort("name.last")}
           sortOrder={sortColumn.order}
