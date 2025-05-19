@@ -9,6 +9,7 @@ import { normalizeString, paginate } from "../utils";
 import { SortColumn, User } from "../types";
 import { PAGE_SIZE } from "../services/userService";
 import { useOutletContext } from "react-router-dom";
+import SearchBox from "../components/common/SearchBox";
 
 const DEFAULT_SORT_COLUMN: SortColumn = { path: "name.last", order: "asc" };
 
@@ -19,15 +20,20 @@ interface LayoutContext {
 }
 
 function UsersPage() {
-  const { searchQuery, currentPage, setCurrentPage } =
-    useOutletContext<LayoutContext>();
+  const { currentPage, setCurrentPage } = useOutletContext<LayoutContext>();
   const [sortColumn, setSortColumn] = useState(DEFAULT_SORT_COLUMN);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const users = useUsers(currentPage);
   const modalRef = useRef<HTMLDialogElement>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   function handleOpenModal(user: User) {
     setSelectedUser(user);
+  }
+
+  function handleSearch(value: string) {
+    setSearchQuery(normalizeString(value));
+    setCurrentPage(1);
   }
 
   useEffect(() => {
@@ -67,19 +73,20 @@ function UsersPage() {
 
   return (
     <div className="min-h-screen p-6 m-10 bg-base-100 text-neutral ">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-4 my-6">
         <Pagination
           pageSize={PAGE_SIZE}
           totalCount={filteredUsers.length}
           selectedPage={currentPage}
           onPageSelect={setCurrentPage}
         />
+        <SearchBox value={searchQuery} onChange={handleSearch} />
         <SortButton
           onClick={() => handleSort("name.last")}
           sortOrder={sortColumn.order}
         />
       </div>
-      <div className="m-3 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {paginatedUsers.map((user) => (
           <UserCard
             onOpen={() => handleOpenModal(user)}

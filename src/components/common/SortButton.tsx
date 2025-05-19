@@ -5,7 +5,10 @@ interface Props {
 function SortButton({ onClick, sortOrder }: Props) {
   return (
     <div>
-      <button onClick={onClick} className="btn btn-square btn-sm ">
+      <button
+        onClick={onClick}
+        className="btn btn-outline btn-sm h-12 w-12 flex items-center justify-center"
+      >
         {sortOrder === "asc" ? (
           <i className="fa-solid fa-sort-up"></i>
         ) : (

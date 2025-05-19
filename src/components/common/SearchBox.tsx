@@ -5,19 +5,12 @@ interface Props {
 
 function SearchBox({ value, onChange }: Props) {
   return (
-    <label className="input input-primary flex items-center max-w-lg mx-auto mt-10">
-      <input
-        type="text"
-        className="grow"
-        placeholder="Search..."
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
+    <label className="input input-bordered input-primary h-12 flex items-center px-4 gap-2 w-full max-w-xl">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
         fill="currentColor"
-        className="w-4 h-4 opacity-70"
+        className="w-5 h-5 opacity-70 mr-3"
       >
         <path
           fillRule="evenodd"
@@ -25,6 +18,13 @@ function SearchBox({ value, onChange }: Props) {
           clipRule="evenodd"
         />
       </svg>
+      <input
+        type="text"
+        className="grow"
+        placeholder="Search..."
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
     </label>
   );
 }
