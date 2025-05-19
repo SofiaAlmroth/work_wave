@@ -1,31 +1,61 @@
+import { useEffect, useRef, useState } from "react";
+
 interface Props {
   value: string;
   onChange(value: string): void;
 }
 
 function SearchBox({ value, onChange }: Props) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    }
+
+    function handleEsc(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEsc);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
+
   return (
-    <label className="input input-bordered input-primary h-12 flex items-center px-4 gap-2 w-full max-w-xl">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 16"
-        fill="currentColor"
-        className="w-5 h-5 opacity-70 mr-3"
+    <div ref={containerRef} className="flex items-center justify-center gap-2 ">
+      <button
+        onClick={() => setOpen(true)}
+        className="text-primary text-2xl hover:scale-110 transition-all"
       >
-        <path
-          fillRule="evenodd"
-          d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-          clipRule="evenodd"
-        />
-      </svg>
-      <input
-        type="text"
-        className="grow"
-        placeholder="Search..."
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
-    </label>
+        {!open && <i className="fa-solid fa-magnifying-glass text-2xl" />}
+      </button>
+
+      {open && (
+        <div className=" w-[50vw] h-10 bg-base-100 rounded-full py-2 px-6 shadow-md flex">
+          <label className="flex items-center gap-2">
+            <i className="fa-solid fa-magnifying-glass opacity-70" />
+            <input
+              type="text"
+              className="text-sm bg-transparent outline-none focus:ring-0 focus:outline-none"
+              placeholder="Search..."
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              autoFocus
+            />
+          </label>
+        </div>
+      )}
+    </div>
   );
 }
 

@@ -72,19 +72,21 @@ function UsersPage() {
   const paginatedUsers = paginate(sortedUsers, PAGE_SIZE, currentPage);
 
   return (
-    <div className="min-h-screen p-6 m-10 bg-base-100 text-neutral ">
-      <div className="flex flex-wrap items-center justify-between gap-4 my-6">
+    <div className="min-h-screen p-6 lg:m-10 md:m-10 sm:m-6 text-neutral ">
+      <div className="flex items-center justify-between mb-3">
         <Pagination
           pageSize={PAGE_SIZE}
           totalCount={filteredUsers.length}
           selectedPage={currentPage}
           onPageSelect={setCurrentPage}
         />
-        <SearchBox value={searchQuery} onChange={handleSearch} />
-        <SortButton
-          onClick={() => handleSort("name.last")}
-          sortOrder={sortColumn.order}
-        />
+        <div className="flex items-center gap-4">
+          <SearchBox value={searchQuery} onChange={handleSearch} />
+          <SortButton
+            onClick={() => handleSort("name.last")}
+            sortOrder={sortColumn.order}
+          />
+        </div>
       </div>
       <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {paginatedUsers.map((user) => (

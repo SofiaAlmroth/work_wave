@@ -7,7 +7,7 @@ function SortButton({ onClick, sortOrder }: Props) {
     <div>
       <button
         onClick={onClick}
-        className="btn btn-outline btn-sm h-12 w-12 flex items-center justify-center"
+        className="btn btn-sm h-10 min-w-10 text-white bg-primary hover:bg-primary/85 hover:scale-105 transition-all duration-200"
       >
         {sortOrder === "asc" ? (
           <i className="fa-solid fa-sort-up"></i>

@@ -15,10 +15,10 @@ function Pagination({
   if (pageCount <= 1) return null;
 
   return (
-    <div className="join h-12 ">
+    <div className="join h-10 ">
       <button
         onClick={() => onPageSelect(selectedPage - 1)}
-        className={`join-item btn btn-sm h-12 min-w-[3rem] text-white bg-primary hover:bg-primary/85 hover:scale-105 transition-all duration-200"
+        className={`join-item btn btn-sm h-10 w-10 text-white bg-primary hover:bg-primary/85 hover:scale-105 transition-all duration-200"
         ${
           selectedPage === 1
             ? "bg-primary/40 cursor-not-allowed"
@@ -27,12 +27,12 @@ function Pagination({
       >
         «
       </button>
-      <button className="join-item btn btn-sm h-12 min-w-[3rem] text-white bg-primary hover:bg-primary ">
+      <button className="join-item btn btn-sm h-10 w-10 text-white bg-primary hover:bg-primary ">
         {selectedPage}
       </button>
       <button
         onClick={() => onPageSelect(selectedPage + 1)}
-        className="join-item btn btn-sm h-12 min-w-[3rem] text-white bg-primary  hover:bg-primary/85 hover:scale-105 transition-all duration-200"
+        className="join-item btn btn-sm h-10 w-10 text-white bg-primary  hover:bg-primary/85 hover:scale-105 transition-all duration-200"
         disabled={selectedPage === pageCount}
       >
         »

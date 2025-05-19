@@ -6,7 +6,7 @@ function Layout() {
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <div className="min-h-screen p-2 m-1 bg-base-100 text-neutral">
+    <div className="min-h-screen  bg-base-200 text-neutral">
       <Navbar resetPagination={() => setCurrentPage(1)} />
 
       <Outlet context={{ currentPage, setCurrentPage }} />

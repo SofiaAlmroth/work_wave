@@ -7,12 +7,15 @@ interface Props {
 
 function Navbar({ resetPagination }: Props) {
   return (
-    <div className="navbar bg-base-100 ">
-      <Link to={"/"} className="btn btn-ghost text-4xl font-black">
+    <div className="navbar shadow-none !bg-base-200">
+      <Link
+        to={"/"}
+        className="btn btn-ghost text-4xl font-black hover:bg-secondary/10 hover:scale-105 transition-all duration-200"
+      >
         <img
           src={WorkWaveLogo}
           alt="WorkWave Logo"
-          className="h-full w-auto mb-12"
+          className="h-12 w-auto"
           onClick={resetPagination}
         />
       </Link>
