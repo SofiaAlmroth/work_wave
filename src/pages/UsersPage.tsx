@@ -1,6 +1,5 @@
 import UserCard from "../components/UserCard";
 import Pagination from "../components/common/Pagination";
-import SearchBox from "../components/common/SearchBox";
 import SortButton from "../components/common/SortButton";
 import UserModal from "../components/UserModal";
 import _ from "lodash";
@@ -9,13 +8,19 @@ import { useUsers } from "../components/hooks/useUsers";
 import { normalizeString, paginate } from "../utils";
 import { SortColumn, User } from "../types";
 import { PAGE_SIZE } from "../services/userService";
-import Navbar from "../components/Navbar";
+import { useOutletContext } from "react-router-dom";
 
 const DEFAULT_SORT_COLUMN: SortColumn = { path: "name.last", order: "asc" };
 
+interface LayoutContext {
+  searchQuery: string;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+}
+
 function UsersPage() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+  const { searchQuery, currentPage, setCurrentPage } =
+    useOutletContext<LayoutContext>();
   const [sortColumn, setSortColumn] = useState(DEFAULT_SORT_COLUMN);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const users = useUsers(currentPage);
@@ -36,10 +41,6 @@ function UsersPage() {
     modalRef.current?.close();
   }
 
-  function handleSearch(value: string) {
-    setSearchQuery(normalizeString(value));
-    setCurrentPage(1);
-  }
   function handleSort(path: string) {
     if (path === sortColumn.path) {
       sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
@@ -65,11 +66,7 @@ function UsersPage() {
   const paginatedUsers = paginate(sortedUsers, PAGE_SIZE, currentPage);
 
   return (
-    <div className="relative">
-      <Navbar />
-      <div className="fixed top-14 left-0 right-0 z-10 bg-gray-50 bg-opacity-50 ">
-        <SearchBox value={searchQuery} onChange={handleSearch} />
-      </div>
+    <div className="min-h-screen p-12 m-10 bg-base-100 text-neutral ">
       <div className="pt-16">
         <Pagination
           pageSize={PAGE_SIZE}

@@ -8,7 +8,7 @@ interface Props {
 function UserCard({ user, onOpen }: Props) {
   return (
     <>
-      <div className=" card bg-base-100 shadow-xl p-6 ">
+      <div className="card bg-secondary shadow-xl p-6 ">
         <div className="">
           <div className="mask mask-squircle w-16 h-16 my-3">
             <img src={user.picture.medium} alt="User Avatar" />
