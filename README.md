@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# WorkWave – Address Book App
+WorkWave is a frontend-only React project built with TypeScript and Vite. It simulates an address book interface by fetching and displaying user data from an external API (Random User API).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The goal of the project is to practice API integration, list filtering, pagination, and working with React Router.
 
-Currently, two official plugins are available:
+## Features
+- Fetches and displays 100 random users from an external API
+- Filter users by name 
+- Pagination (12 users per page)
+- Dynamic routing for individual user details
+- Responsive and user-friendly UI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- React
+- TypeScript
+- Vite
+- React Router
+- Axios
+- DaisyUI + TailwindCSS 
 
-## Expanding the ESLint configuration
+## Getting Started
+- npm install
+- npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Purpose
+This project was created to:
+- Practice fetching and displaying data from a public API
+- Work with state and effects in React
+- Implement pagination and filtering
+- Use React Router for navigating between pages and user details
+- Structure a small React app using best practices
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+🧪 API Used
+Random User API
