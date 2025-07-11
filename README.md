@@ -19,8 +19,10 @@ The goal of the project is to practice API integration, list filtering, paginati
 - DaisyUI + TailwindCSS 
 
 ## Getting Started
+```bash
 - npm install
 - npm run dev
+```
 
 ## Project Purpose
 This project was created to:
