@@ -20,8 +20,8 @@ The goal of the project is to practice API integration, list filtering, paginati
 
 ## Getting Started
 ```bash
-- npm install
-- npm run dev
+npm install
+npm run dev
 ```
 
 ## Project Purpose
